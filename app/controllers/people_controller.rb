@@ -28,6 +28,13 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.save
+        if (params[:course_id])
+          course = Course.find(params[:course_id])
+          Enrollment.create(course: course, student: @person)
+          format.html {
+            redirect_to action: 'students', controller: 'courses', :id => course.id, notice: 'Enrollment was successfully created.'
+          }
+        end
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else
@@ -70,11 +77,14 @@ class PeopleController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
       params.require(:person).permit(
-        :first_name,
-        :last_name,
+        :course,
         :email,
         :email_confirmation,
+        :first_name,
+        :last_name,
         :password,
-        :password_confirmation)
+        :password_confirmation,
+        :course_id,
+      )
     end
 end
