@@ -1,5 +1,5 @@
 <% form_params = [person] if local_assigns[:form_params].nil? %>
-<%= form_for(*form_params, remote: true) do |f| %>
+<%= form_for(*form_params) do |f| %>
   <% if person.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>

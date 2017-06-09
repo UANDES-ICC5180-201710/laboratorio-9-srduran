@@ -41,7 +41,7 @@
         <h4 class="modal-title" id="addPersonAndEnrollmentLabel">Add student</h4>
       </div>
       <div class="modal-body">
-        <%= render 'people/form', course: @course, person: Person.new %>
+        <%= render 'people/form', course: @course, person: Person.new, form_params: [person, remote: true] %>
       </div>
     </div>
   </div>
