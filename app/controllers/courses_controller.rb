@@ -83,6 +83,8 @@ class CoursesController < ApplicationController
         teacher = nil
       end
 
-      params.require(:course).permit(:title, :code, :quota).merge(:teacher => teacher)
+      params.require(:course).permit(
+        :title, :code, :quota
+      ).merge(:teacher => teacher)
     end
 end

@@ -11,17 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
+    <%= f.label :start_date %>
+    <%= f.text_field :start_date, class: "form-control datepicker" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :end_date %>
+    <%= f.text_field :end_date, class: "form-control datepicker" %>
+  </div>
+
+  <div class="field form-group">
     <%= f.label :statement %>
-    <%= f.text_area :statement %>
+    <%= f.text_area :statement, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions form-group">
+    <%= f.submit nil, class: "btn btn-success" %>
   </div>
 <% end %>
