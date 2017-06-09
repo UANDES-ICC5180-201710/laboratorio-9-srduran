@@ -4,7 +4,7 @@ class Person < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :enrollments
-  has_many :courses, through: :enrollments
+  has_many :courses, through: :enrollments, :dependent => :delete_all
 
   validates :first_name, length: { minimum: 3,  maximum: 30 }, presence: true
   validates :last_name, length: { minimum: 3,  maximum: 30 }, presence: true

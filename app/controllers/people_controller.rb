@@ -25,18 +25,21 @@ class PeopleController < ApplicationController
   # POST /people.json
   def create
     @person = Person.new(person_params)
+    if (params[:course_id])
+      @course = Course.find(params[:course_id])
+    end
 
     respond_to do |format|
       if @person.save
         if (params[:course_id])
-          course = Course.find(params[:course_id])
-          Enrollment.create(course: course, student: @person)
+          Enrollment.create(course: @course, student: @person)
           format.html {
-            redirect_to action: 'students', controller: 'courses', :id => course.id, notice: 'Enrollment was successfully created.'
+            redirect_to course_enrollments_url(course_id: @course.id), notice: 'Enrollment was successfully created.'
           }
+        else
+          format.html { redirect_to @person, notice: 'Person was successfully created.' }
+          format.json { render :show, status: :created, location: @person }
         end
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
-        format.json { render :show, status: :created, location: @person }
       else
         format.html { render :new }
         format.json { render json: @person.errors, status: :unprocessable_entity }
