@@ -20,7 +20,7 @@
         <td><%= course.code %></td>
         <td><%= course.teacher %></td>
         <td>
-          <button type="button" class="btn btn-link glyphicon glyphicon-heart"></button>
+          <button type="button" class="btn btn-link glyphicon glyphicon-heart gray"></button>
         </td>
         <td><%= link_to 'Show', course %></td>
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
@@ -40,8 +40,8 @@
         $(this).blur();
         $.ajax({
             type: "POST",
-            url: "course_people_controller/usercourse",
-            data: "",
+            url: "course_people/usercourse",
+            data: {value_id: $(this).id},
             datatype: 'json',
             contentType: 'application/json; charset=utf-8'
         }).done(function (msg) {

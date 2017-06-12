@@ -23,6 +23,9 @@ class CoursePeopleController < ApplicationController
 
   def usercourse
     @course_person = CoursePerson.all
+    puts "hola"
+    person_id = current_person.id
+    puts person_id
   end
 
   # POST /course_people

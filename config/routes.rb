@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     resources :people
 
     root to: 'courses#index'
+    post 'course_people/usercourse' => 'course_people#usercourse'
   end
-  post 'course_people_controller/usercourse' => 'course_people_controller#usercourse'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
