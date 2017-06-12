@@ -14,6 +14,6 @@ Rails.application.routes.draw do
 
     root to: 'courses#index'
   end
-
+  post 'course_people_controller/usercourse' => 'course_people_controller#usercourse'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
